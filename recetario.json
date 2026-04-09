@@ -1,0 +1,209 @@
+{
+    "Estodado de pollo": {
+        "ingredientes": {
+            "Pollo": {
+                "cantidad": 1.0,
+                "unidad_receta": "unidad",
+                "precio_base": 25.0,
+                "unidad_precio": "unidad",
+                "categoria": "Carnes"
+            },
+            "Papa rosada": {
+                "cantidad": 1.25,
+                "unidad_receta": "kg",
+                "precio_base": 2.0,
+                "unidad_precio": "kg",
+                "categoria": "Verduras"
+            },
+            "zanahoria": {
+                "cantidad": 0.25,
+                "unidad_receta": "kg",
+                "precio_base": 5.0,
+                "unidad_precio": "kg",
+                "categoria": "Verduras"
+            },
+            "alverjita": {
+                "cantidad": 0.25,
+                "unidad_receta": "kg",
+                "precio_base": 8.0,
+                "unidad_precio": "kg",
+                "categoria": "Verduras"
+            },
+            "tomate": {
+                "cantidad": 0.25,
+                "unidad_receta": "kg",
+                "precio_base": 7.0,
+                "unidad_precio": "kg",
+                "categoria": "Verduras"
+            },
+            "cebolla": {
+                "cantidad": 0.25,
+                "unidad_receta": "kg",
+                "precio_base": 4.0,
+                "unidad_precio": "kg",
+                "categoria": "Verduras"
+            },
+            "aji especial": {
+                "cantidad": 1.0,
+                "unidad_receta": "unidad",
+                "precio_base": 1.0,
+                "unidad_precio": "unidad",
+                "categoria": "Otros"
+            },
+            "Hongo con laurel": {
+                "cantidad": 1.0,
+                "unidad_receta": "unidad",
+                "precio_base": 1.0,
+                "unidad_precio": "unidad",
+                "categoria": "Otros"
+            },
+            "arroz": {
+                "cantidad": 1.0,
+                "unidad_receta": "kg",
+                "precio_base": 3.8,
+                "unidad_precio": "kg",
+                "categoria": "Abarrotes"
+            },
+            "pasas": {
+                "cantidad": 1.0,
+                "unidad_receta": "unidad",
+                "precio_base": 1.0,
+                "unidad_precio": "unidad",
+                "categoria": "Abarrotes"
+            }
+        },
+        "preparacion": ""
+    },
+    "Causa de pollo": {
+        "ingredientes": {
+            "Pollo": {
+                "cantidad": 0.75,
+                "unidad_receta": "unidad",
+                "precio_base": 25.0,
+                "unidad_precio": "unidad",
+                "categoria": "Carnes"
+            },
+            "papa rosada": {
+                "cantidad": 2.5,
+                "unidad_receta": "kg",
+                "precio_base": 2.0,
+                "unidad_precio": "kg",
+                "categoria": "Verduras"
+            },
+            "aji verde": {
+                "cantidad": 0.25,
+                "unidad_receta": "kg",
+                "precio_base": 7.0,
+                "unidad_precio": "kg",
+                "categoria": "Verduras"
+            },
+            "alverjita": {
+                "cantidad": 0.25,
+                "unidad_receta": "kg",
+                "precio_base": 8.0,
+                "unidad_precio": "kg",
+                "categoria": "Verduras"
+            },
+            "tomate": {
+                "cantidad": 0.25,
+                "unidad_receta": "kg",
+                "precio_base": 7.0,
+                "unidad_precio": "kg",
+                "categoria": "Verduras"
+            },
+            "cebolla": {
+                "cantidad": 0.25,
+                "unidad_receta": "kg",
+                "precio_base": 4.0,
+                "unidad_precio": "kg",
+                "categoria": "Verduras"
+            },
+            "arroz": {
+                "cantidad": 1.0,
+                "unidad_receta": "kg",
+                "precio_base": 3.8,
+                "unidad_precio": "kg",
+                "categoria": "Abarrotes"
+            },
+            "huevo": {
+                "cantidad": 0.5,
+                "unidad_receta": "kg",
+                "precio_base": 6.0,
+                "unidad_precio": "kg",
+                "categoria": "Abarrotes"
+            }
+        },
+        "preparacion": ""
+    },
+    "Carapulcra de pollo": {
+        "ingredientes": {
+            "pollo": {
+                "cantidad": 1.0,
+                "unidad_receta": "unidad",
+                "precio_base": 25.0,
+                "unidad_precio": "unidad",
+                "categoria": "Carnes"
+            },
+            "cebolla": {
+                "cantidad": 0.25,
+                "unidad_receta": "kg",
+                "precio_base": 4.0,
+                "unidad_precio": "kg",
+                "categoria": "Verduras"
+            },
+            "aji especial": {
+                "cantidad": 1.0,
+                "unidad_receta": "unidad",
+                "precio_base": 1.0,
+                "unidad_precio": "unidad",
+                "categoria": "Otros"
+            },
+            "arroz": {
+                "cantidad": 1.0,
+                "unidad_receta": "kg",
+                "precio_base": 3.8,
+                "unidad_precio": "kg",
+                "categoria": "Abarrotes"
+            },
+            "papa seca": {
+                "cantidad": 1.0,
+                "unidad_receta": "kg",
+                "precio_base": 8.0,
+                "unidad_precio": "kg",
+                "categoria": "Abarrotes"
+            },
+            "mani molido": {
+                "cantidad": 1.0,
+                "unidad_receta": "unidad",
+                "precio_base": 1.0,
+                "unidad_precio": "unidad",
+                "categoria": "Abarrotes"
+            }
+        },
+        "preparacion": ""
+    },
+    "seco": {
+        "ingredientes": {
+            "Milanesa": {
+                "cantidad": 0.1,
+                "unidad_receta": "unidad",
+                "precio_base": 3.0,
+                "unidad_precio": "unidad",
+                "categoria": "Carnes"
+            }
+        },
+        "preparacion": ""
+    },
+    "Lentejas con Lomito": {
+        "ingredientes": {
+            "Lenteja": {
+                "cantidad": 0.25,
+                "unidad_receta": "kg",
+                "precio_base": 4.0,
+                "unidad_precio": "kg",
+                "categoria": "Abarrotes"
+            }
+        },
+        "preparacion": ""
+    }
+}

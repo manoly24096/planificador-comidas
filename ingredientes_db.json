@@ -1,0 +1,478 @@
+{
+    "bofe": {
+        "display_name": "Bofe",
+        "unidad_receta_default": "kg",
+        "precio_base": 15.0,
+        "unidad_precio": "kg",
+        "categoria": "Carnes"
+    },
+    "chuleta": {
+        "display_name": "Chuleta",
+        "unidad_receta_default": "unidad",
+        "precio_base": 3.0,
+        "unidad_precio": "unidad",
+        "categoria": "Carnes"
+    },
+    "chancho": {
+        "display_name": "Chancho",
+        "unidad_receta_default": "kg",
+        "precio_base": 19.0,
+        "unidad_precio": "kg",
+        "categoria": "Carnes"
+    },
+    "milanesa": {
+        "display_name": "Milanesa",
+        "unidad_receta_default": "unidad",
+        "precio_base": 3.0,
+        "unidad_precio": "unidad",
+        "categoria": "Carnes"
+    },
+    "corazon": {
+        "display_name": "Corazon",
+        "unidad_receta_default": "kg",
+        "precio_base": 18.0,
+        "unidad_precio": "kg",
+        "categoria": "Carnes"
+    },
+    "pescado": {
+        "display_name": "Pescado",
+        "unidad_receta_default": "unidad",
+        "precio_base": 20.0,
+        "unidad_precio": "unidad",
+        "categoria": "Carnes"
+    },
+    "carne picada": {
+        "display_name": "Carne picada",
+        "unidad_receta_default": "kg",
+        "precio_base": 22.0,
+        "unidad_precio": "kg",
+        "categoria": "Carnes"
+    },
+    "carne molida": {
+        "display_name": "Carne molida",
+        "unidad_receta_default": "kg",
+        "precio_base": 21.0,
+        "unidad_precio": "kg",
+        "categoria": "Carnes"
+    },
+    "carne de res": {
+        "display_name": "Carne de res",
+        "unidad_receta_default": "kg",
+        "precio_base": 27.0,
+        "unidad_precio": "kg",
+        "categoria": "Carnes"
+    },
+    "mondongo": {
+        "display_name": "Mondongo",
+        "unidad_receta_default": "kg",
+        "precio_base": 18.0,
+        "unidad_precio": "kg",
+        "categoria": "Carnes"
+    },
+    "pellejo de chancho": {
+        "display_name": "Pellejo de chancho",
+        "unidad_receta_default": "unidad",
+        "precio_base": 4.0,
+        "unidad_precio": "unidad",
+        "categoria": "Carnes"
+    },
+    "higado": {
+        "display_name": "Higado",
+        "unidad_receta_default": "unidad",
+        "precio_base": 3.0,
+        "unidad_precio": "unidad",
+        "categoria": "Carnes"
+    },
+    "papa rosada": {
+        "display_name": "Papa rosada",
+        "unidad_receta_default": "kg",
+        "precio_base": 2.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "veterrega": {
+        "display_name": "Veterrega",
+        "unidad_receta_default": "atado",
+        "precio_base": 5.0,
+        "unidad_precio": "atado",
+        "categoria": "Verduras"
+    },
+    "caigua": {
+        "display_name": "Caigua",
+        "unidad_receta_default": "kg",
+        "precio_base": 4.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "espinaca": {
+        "display_name": "Espinaca",
+        "unidad_receta_default": "unidad",
+        "precio_base": 5.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "albaca": {
+        "display_name": "albaca",
+        "unidad_receta_default": "unidad",
+        "precio_base": 5.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "culantro": {
+        "display_name": "culantro",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "brocoli": {
+        "display_name": "brocoli",
+        "unidad_receta_default": "unidad",
+        "precio_base": 6.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "zanahoria": {
+        "display_name": "Zanahoria",
+        "unidad_receta_default": "kg",
+        "precio_base": 5.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "camote": {
+        "display_name": "Camote",
+        "unidad_receta_default": "kg",
+        "precio_base": 6.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "lechuga": {
+        "display_name": "Lechuga",
+        "unidad_receta_default": "unidad",
+        "precio_base": 2.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "aji verde": {
+        "display_name": "Aji verde",
+        "unidad_receta_default": "kg",
+        "precio_base": 7.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "alverjita": {
+        "display_name": "Alverjita",
+        "unidad_receta_default": "kg",
+        "precio_base": 7.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "olluco": {
+        "display_name": "olluco",
+        "unidad_receta_default": "kg",
+        "precio_base": 8.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "yuca": {
+        "display_name": "Yuca",
+        "unidad_receta_default": "kg",
+        "precio_base": 7.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "limon": {
+        "display_name": "limon",
+        "unidad_receta_default": "kg",
+        "precio_base": 8.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "tomate": {
+        "display_name": "Tomate",
+        "unidad_receta_default": "kg",
+        "precio_base": 7.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "cebolla": {
+        "display_name": "Cebolla",
+        "unidad_receta_default": "kg",
+        "precio_base": 4.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "verduras chinas": {
+        "display_name": "Verduras chinas",
+        "unidad_receta_default": "kg",
+        "precio_base": 8.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "pepino": {
+        "display_name": "pepino",
+        "unidad_receta_default": "unidad",
+        "precio_base": 2.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "coliflor": {
+        "display_name": "Coliflor",
+        "unidad_receta_default": "unidad",
+        "precio_base": 4.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "hierba buena": {
+        "display_name": "Hierba buena",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "perejil": {
+        "display_name": "Perejil",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "zapallo": {
+        "display_name": "Zapallo",
+        "unidad_receta_default": "kg",
+        "precio_base": 4.0,
+        "unidad_precio": "kg",
+        "categoria": "Verduras"
+    },
+    "cebolla china": {
+        "display_name": "Cebolla china",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "oregano": {
+        "display_name": "Oregano",
+        "unidad_receta_default": "unidad",
+        "precio_base": 0.5,
+        "unidad_precio": "unidad",
+        "categoria": "Otros"
+    },
+    "pimiento": {
+        "display_name": "Pimiento",
+        "unidad_receta_default": "unidad",
+        "precio_base": 2.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "choclo": {
+        "display_name": "Choclo",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "frejolito": {
+        "display_name": "Frejolito",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Verduras"
+    },
+    "aji especial": {
+        "display_name": "Aji especial",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Otros"
+    },
+    "tocino": {
+        "display_name": "Tocino",
+        "unidad_receta_default": "unidad",
+        "precio_base": 5.0,
+        "unidad_precio": "unidad",
+        "categoria": "Otros"
+    },
+    "curcuma": {
+        "display_name": "Curcuma",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Otros"
+    },
+    "hongo con laurel": {
+        "display_name": "Hongo con laurel",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Otros"
+    },
+    "arroz": {
+        "display_name": "Arroz",
+        "unidad_receta_default": "kg",
+        "precio_base": 3.8,
+        "unidad_precio": "kg",
+        "categoria": "Abarrotes"
+    },
+    "harina de pescado": {
+        "display_name": "Harina de pescado",
+        "unidad_receta_default": "kg",
+        "precio_base": 5.0,
+        "unidad_precio": "kg",
+        "categoria": "Abarrotes"
+    },
+    "frejol castilla": {
+        "display_name": "Frejol castilla",
+        "unidad_receta_default": "kg",
+        "precio_base": 9.0,
+        "unidad_precio": "kg",
+        "categoria": "Abarrotes"
+    },
+    "frejol canario": {
+        "display_name": "Frejol canario",
+        "unidad_receta_default": "kg",
+        "precio_base": 8.0,
+        "unidad_precio": "kg",
+        "categoria": "Abarrotes"
+    },
+    "tallarines": {
+        "display_name": "Tallarines",
+        "unidad_receta_default": "kg",
+        "precio_base": 5.0,
+        "unidad_precio": "kg",
+        "categoria": "Abarrotes"
+    },
+    "leche": {
+        "display_name": "Leche",
+        "unidad_receta_default": "unidad",
+        "precio_base": 4.0,
+        "unidad_precio": "unidad",
+        "categoria": "Abarrotes"
+    },
+    "trigo": {
+        "display_name": "Trigo",
+        "unidad_receta_default": "kg",
+        "precio_base": 6.0,
+        "unidad_precio": "kg",
+        "categoria": "Abarrotes"
+    },
+    "papa seca": {
+        "display_name": "Papa seca",
+        "unidad_receta_default": "kg",
+        "precio_base": 8.0,
+        "unidad_precio": "kg",
+        "categoria": "Abarrotes"
+    },
+    "pasas": {
+        "display_name": "Pasas",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Abarrotes"
+    },
+    "mani molido": {
+        "display_name": "Mani molido",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Abarrotes"
+    },
+    "sillau": {
+        "display_name": "Sillau",
+        "unidad_receta_default": "unidad",
+        "precio_base": 4.0,
+        "unidad_precio": "unidad",
+        "categoria": "Abarrotes"
+    },
+    "lenteja": {
+        "display_name": "Lenteja",
+        "unidad_receta_default": "kg",
+        "precio_base": 4.0,
+        "unidad_precio": "kg",
+        "categoria": "Abarrotes"
+    },
+    "mantequilla": {
+        "display_name": "Mantequilla",
+        "unidad_receta_default": "unidad",
+        "precio_base": 2.0,
+        "unidad_precio": "unidad",
+        "categoria": "Abarrotes"
+    },
+    "queso": {
+        "display_name": "Queso",
+        "unidad_receta_default": "unidad",
+        "precio_base": 5.0,
+        "unidad_precio": "unidad",
+        "categoria": "Abarrotes"
+    },
+    "galleta": {
+        "display_name": "Galleta",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Abarrotes"
+    },
+    "vinagre": {
+        "display_name": "Vinagre",
+        "unidad_receta_default": "unidad",
+        "precio_base": 4.0,
+        "unidad_precio": "unidad",
+        "categoria": "Abarrotes"
+    },
+    "pan": {
+        "display_name": "Pan",
+        "unidad_receta_default": "unidad",
+        "precio_base": 0.2,
+        "unidad_precio": "unidad",
+        "categoria": "Abarrotes"
+    },
+    "huevo": {
+        "display_name": "Huevo",
+        "unidad_receta_default": "kg",
+        "precio_base": 6.0,
+        "unidad_precio": "kg",
+        "categoria": "Abarrotes"
+    },
+    "arverjita partida": {
+        "display_name": "Arverjita partida",
+        "unidad_receta_default": "kg",
+        "precio_base": 5.0,
+        "unidad_precio": "kg",
+        "categoria": "Abarrotes"
+    },
+    "aceituna": {
+        "display_name": "Aceituna",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Abarrotes"
+    },
+    "ajos": {
+        "display_name": "Ajos",
+        "unidad_receta_default": "unidad",
+        "precio_base": 1.0,
+        "unidad_precio": "unidad",
+        "categoria": "Otros"
+    },
+    "sal": {
+        "display_name": "Sal",
+        "unidad_receta_default": "unidad",
+        "precio_base": 2.0,
+        "unidad_precio": "unidad",
+        "categoria": "Abarrotes"
+    },
+    "aceite": {
+        "display_name": "Aceite",
+        "unidad_receta_default": "unidad",
+        "precio_base": 12.0,
+        "unidad_precio": "unidad",
+        "categoria": "Abarrotes"
+    },
+    "pollo": {
+        "display_name": "Pollo",
+        "unidad_receta_default": "unidad",
+        "precio_base": 25.0,
+        "unidad_precio": "unidad",
+        "categoria": "Carnes"
+    }
+}
