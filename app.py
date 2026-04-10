@@ -8,11 +8,12 @@ URL = st.secrets["SUPABASE_URL"]
 KEY = st.secrets["SUPABASE_KEY"]
 supabase = create_client(URL, KEY)
 
-# --- 2. FUNCIONES NUBE ---
+# --- 2. FUNCIONES NUBE (Nombres corregidos) ---
 def cargar_ingredientes():
     try:
         res = supabase.table("ingredientes_db").select("*").execute()
-        return {item['display_name']: item for item in res.data}
+        # Intentamos con 'key_name' que es el estándar de Supabase
+        return {item.get('display_name', item.get('key_name')): item for item in res.data}
     except: return {}
 
 def cargar_recetario():
@@ -35,7 +36,8 @@ if 'plan' not in st.session_state:
 st.sidebar.title(f"Menú Pro")
 opcion = st.sidebar.radio("Ir a:", ["Mi Plan 📝", "Recetario 📖", "Añadir/Editar Platos 🍳", "Base de Ingredientes 🍅"])
 
-# --- SECCIÓN: BASE DE INGREDIENTES ---
+
+# --- SECCIÓN: BASE DE INGREDIENTES (Nombres corregidos) ---
 if opcion == "Base de Ingredientes 🍅":
     st.title("Ingredientes Disponibles")
     with st.form("nuevo_ing"):
@@ -44,21 +46,20 @@ if opcion == "Base de Ingredientes 🍅":
         p = st.number_input("Precio S/", min_value=0.0)
         if st.form_submit_button("Guardar"):
             if n:
-                # AQUÍ ESTÁ EL CAMBIO: Usamos los nombres exactos del SQL
+                # Cambiamos los nombres a inglés para que coincidan con la tabla
                 datos_ing = {
-                    "nombre_clave": n.lower().strip(), 
-                    "nombre_para_mostrar": n, 
+                    "key_name": n.lower().strip(), 
+                    "display_name": n, 
                     "precio_base": p, 
-                    "categoria": cat,
-                    "unidad_precio": "unidad"
+                    "categoria": cat
                 }
                 try:
                     supabase.table("ingredientes_db").upsert(datos_ing).execute()
                     st.session_state.ingredientes_db = cargar_ingredientes()
                     st.success(f"¡{n} guardado!"); st.rerun()
                 except Exception as e:
-                    st.error(f"Error de base de datos: {e}")
-
+                    # Si falla, te mostrará qué columnas SÍ existen
+                    st.error(f"Error: {e}")
 
 # --- SECCIÓN: AÑADIR/EDITAR PLATOS ---
 elif opcion == "Añadir/Editar Platos 🍳":
