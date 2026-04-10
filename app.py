@@ -38,22 +38,67 @@ if 'plan' not in st.session_state:
 st.sidebar.title("Menú Pro")
 opcion = st.sidebar.radio("Ir a:", ["Mi Plan 📝", "Recetario 📖", "Añadir/Editar Platos 🍳", "Base de Ingredientes 🍅"])
 
-# --- SECCIÓN: INGREDIENTES ---
+# --- SECCIÓN: BASE DE INGREDIENTES (CON LIMPIEZA AUTOMÁTICA) ---
 if opcion == "Base de Ingredientes 🍅":
-    st.title("Gestión de Inventario")
-    with st.form("nuevo_ing"):
-        n = st.text_input("Nombre del Ingrediente")
+    st.title("Gestión de Inventario 📋")
+    
+    # Usamos una clave para resetear el formulario
+    if "form_key" not in st.session_state:
+        st.session_state.form_key = 0
+
+    with st.form(key=f"form_ing_{st.session_state.form_key}"):
+        st.subheader("Registrar Nuevo Ingrediente")
+        n = st.text_input("Nombre del Ingrediente (ej: Pollo)")
+        
         c1, c2 = st.columns(2)
         cat = c1.selectbox("Categoría", ["Abarrotes", "Carnes", "Verduras", "Frutas", "Otros"])
-        p = c2.number_input("Precio S/ (por unidad/kg)", min_value=0.0)
+        p = c2.number_input("Precio S/ (por unidad/kg)", min_value=0.0, step=0.1)
+        
         c3, c4 = st.columns(2)
         cant_inv = c3.number_input("Stock Actual", min_value=0.0)
         uni_med = c4.selectbox("Unidad", ["kg", "g", "unidad", "atado", "litro"])
-        if st.form_submit_button("Guardar"):
-            datos = {"key_name": n.lower().strip(), "display_name": n, "precio_base": p, "categoria": cat, "cantidad_inventario": cant_inv, "unidad_medida": uni_med}
-            supabase.table("ingredientes_db").upsert(datos, on_conflict="key_name").execute()
-            st.session_state.ingredientes_db = cargar_ingredientes()
-            st.success(f"¡{n} guardado!"); st.rerun()
+        
+        col_btn1, col_btn2 = st.columns([1, 4])
+        enviar = col_btn1.form_submit_button("💾 Guardar")
+        
+        if enviar:
+            if n:
+                datos = {
+                    "key_name": n.lower().strip(), 
+                    "display_name": n, 
+                    "precio_base": p, 
+                    "categoria": cat, 
+                    "cantidad_inventario": cant_inv, 
+                    "unidad_medida": uni_med
+                }
+                supabase.table("ingredientes_db").upsert(datos, on_conflict="key_name").execute()
+                
+                # RECARGA Y LIMPIEZA
+                st.session_state.ingredientes_db = cargar_ingredientes()
+                st.session_state.form_key += 1 # Esto "destruye" el form viejo y crea uno limpio
+                st.success(f"¡{n} guardado con éxito!")
+                st.rerun()
+            else:
+                st.warning("Por favor, ingresa un nombre.")
+
+    # TABLA DE CONSULTA RÁPIDA (Debajo del formulario)
+    st.divider()
+    st.subheader("Tus Ingredientes Registrados")
+    if st.session_state.ingredientes_db:
+        df_ing = pd.DataFrame(st.session_state.ingredientes_db.values())
+        # Mostramos solo las columnas importantes para que se vea ordenado
+        st.dataframe(
+            df_ing[["display_name", "categoria", "precio_base", "unidad_medida", "cantidad_inventario"]],
+            column_config={
+                "display_name": "Nombre",
+                "categoria": "Categoría",
+                "precio_base": "Precio S/",
+                "unidad_medida": "Unidad",
+                "cantidad_inventario": "Stock"
+            },
+            hide_index=True,
+            use_container_width=True
+        )
 
 # --- SECCIÓN: AÑADIR/EDITAR PLATOS ---
 elif opcion == "Añadir/Editar Platos 🍳":
