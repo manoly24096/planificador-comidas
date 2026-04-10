@@ -1,125 +1,134 @@
 import streamlit as st
-import pandas as pd
 from supabase import create_client
-import io
 
-# --- 1. CONEXIÓN SEGURA A SUPABASE ---
-# Streamlit leerá esto de los "Secrets" que configuraste
+# --- 1. CONFIGURACIÓN Y CONEXIÓN ---
+st.set_page_config(page_title="Planificador Pro", layout="wide")
+
+# Conectamos con las llaves que pusiste en los Secrets de Streamlit
 URL = st.secrets["SUPABASE_URL"]
 KEY = st.secrets["SUPABASE_KEY"]
 supabase = create_client(URL, KEY)
 
-CATEGORIAS = ['Abarrotes', 'Carnes', 'Verduras', 'Frutas', 'Lácteos', 'Otros']
-
-# --- 2. FUNCIONES PARA LEER DE LA NUBE ---
-def cargar_ingredientes_nube():
+# --- 2. FUNCIONES DE CARGA (NUBE) ---
+def cargar_ingredientes():
     try:
         res = supabase.table("ingredientes_db").select("*").execute()
-        db = {}
-        for item in res.data:
-            db[item['key_name']] = {
-                "display_name": item['display_name'],
-                "precio_base": item['precio_base'],
-                "unidad_precio": item['unidad_precio'],
-                "categoria": item['categoria']
-            }
-        return db
+        # Convertimos a diccionario para manejo fácil
+        return {item['display_name']: item for item in res.data}
     except:
         return {}
 
-def cargar_recetario_nube():
+def cargar_recetario():
     try:
         res = supabase.table("recetario").select("*").execute()
-        recetas = {}
-        for item in res.data:
-            recetas[item['nombre_plato']] = {
-                "ingredientes": item['ingredientes'],
-                "preparacion": item['preparacion']
-            }
-        return recetas
+        return {item['nombre_plato']: item for item in res.data}
     except:
         return {}
 
-# --- 3. INICIALIZAR ESTADOS ---
+# --- 3. INICIALIZAR ESTADOS DE SESIÓN ---
 if 'ingredientes_db' not in st.session_state:
-    st.session_state.ingredientes_db = cargar_ingredientes_nube()
+    st.session_state.ingredientes_db = cargar_ingredientes()
 if 'recetario' not in st.session_state:
-    st.session_state.recetario = cargar_recetario_nube()
-if 'plan' not in st.session_state:
-    st.session_state.plan = []
+    st.session_state.recetario = cargar_recetario()
 if 'temp_ingredientes' not in st.session_state:
     st.session_state.temp_ingredientes = {}
+if 'plan' not in st.session_state:
+    st.session_state.plan = []
 
-# --- 4. INTERFAZ ---
-st.set_page_config(page_title="Menú Pro", layout="wide")
-st.sidebar.title("Navegación")
-opcion = st.sidebar.radio("Ir a:", ["Mi Plan 📝", "Recetario 📖", "Gestionar Platos 🍳", "Base de Ingredientes 🍅"])
+# --- 4. BARRA LATERAL (NAVEGACIÓN) ---
+st.sidebar.title("Menú de Navegación")
+opcion = st.sidebar.radio("Ir a:", [
+    "Mi Plan 📝", 
+    "Recetario 📖", 
+    "Gestionar Platos 🍳", 
+    "Base de Ingredientes 🍅"
+])
 
-# --- SECCIÓN: INGREDIENTES ---
+# --- SECCIÓN: BASE DE INGREDIENTES ---
 if opcion == "Base de Ingredientes 🍅":
-    st.title("Ingredientes en la Nube ☁️")
-    with st.form("nuevo_ing"):
-        nom = st.text_input("Nombre del Ingrediente")
-        c1, c2 = st.columns(2)
-        cat = c1.selectbox("Categoría", CATEGORIAS)
-        pre = c2.number_input("Precio S/", min_value=0.0)
-        if st.form_submit_button("Guardar Permanente"):
-            if nom:
-                clave = nom.lower().strip()
+    st.title("Gestión de Ingredientes (Nube)")
+    
+    with st.form("form_ingrediente"):
+        nombre = st.text_input("Nombre del ingrediente (ej. Pollo)")
+        categoria = st.selectbox("Categoría", ["Abarrotes", "Carnes", "Verduras", "Lácteos", "Otros"])
+        precio = st.number_input("Precio base (S/)", min_value=0.0, step=0.10)
+        
+        if st.form_submit_button("💾 Guardar en Supabase"):
+            if nombre:
                 data = {
-                    "key_name": clave,
-                    "display_name": nom,
-                    "precio_base": pre,
-                    "unidad_precio": "unidad",
-                    "categoria": cat
+                    "key_name": nombre.lower().strip(),
+                    "display_name": nombre,
+                    "precio_base": precio,
+                    "unidad_precio": "unidad/kg",
+                    "categoria": categoria
                 }
                 supabase.table("ingredientes_db").upsert(data).execute()
-                st.session_state.ingredientes_db = cargar_ingredientes_nube() 
-                st.success(f"¡{nom} guardado en la nube!")
+                st.session_state.ingredientes_db = cargar_ingredientes() # Recarga inmediata
+                st.success(f"¡{nombre} guardado correctamente!")
+            else:
+                st.error("El nombre es obligatorio")
 
 # --- SECCIÓN: GESTIONAR PLATOS ---
 elif opcion == "Gestionar Platos 🍳":
-    st.title("Creador de Recetas")
-    nombre_p = st.text_input("Nombre del Nuevo Plato")
+    st.title("Creador de Recetas Permanente")
+    
+    nombre_plato = st.text_input("Nombre del nuevo plato (ej. Arroz con Pollo)")
     
     if st.session_state.ingredientes_db:
-        nombres_ing = [i['display_name'] for i in st.session_state.ingredientes_db.values()]
-        sel_ing = st.selectbox("Seleccionar ingrediente:", nombres_ing)
-        cant = st.number_input("Cantidad", min_value=0.1)
-        if st.button("Añadir a receta"):
-            st.session_state.temp_ingredientes[sel_ing] = {"cantidad": cant, "unidad": "u"}
-            st.rerun()
-    
-    st.write("Ingredientes actuales en la receta:", st.session_state.temp_ingredientes)
-    
-    if st.button("💾 GUARDAR PLATO PARA SIEMPRE"):
-        if nombre_p and st.session_state.temp_ingredientes:
-            data = {
-                "nombre_plato": nombre_p,
-                "ingredientes": st.session_state.temp_ingredientes,
-                "preparacion": "Receta creada desde la web"
-            }
-            supabase.table("recetario").upsert(data).execute()
-            st.session_state.recetario = cargar_recetario_nube()
+        st.subheader("Añadir Ingredientes")
+        c1, c2 = st.columns([3, 1])
+        lista_nombres = list(st.session_state.ingredientes_db.keys())
+        ing_sel = c1.selectbox("Elegir ingrediente:", lista_nombres)
+        cantidad = c2.number_input("Cantidad", min_value=0.01, value=1.0)
+        
+        if st.button("➕ Añadir a la receta"):
+            st.session_state.temp_ingredientes[ing_sel] = cantidad
+            st.rerun() # Esto hace que los ingredientes aparezcan de inmediato
+            
+    # Mostrar lista actual de la receta
+    st.markdown("---")
+    st.subheader("Ingredientes seleccionados:")
+    if st.session_state.temp_ingredientes:
+        for ing, cant in st.session_state.temp_ingredientes.items():
+            st.write(f"✅ {ing}: {cant}")
+        
+        if st.button("🗑️ Limpiar lista"):
             st.session_state.temp_ingredientes = {}
-            st.success("¡Arroz con Pollo guardado permanentemente!")
+            st.rerun()
+    else:
+        st.info("Aún no has añadido ingredientes a este plato.")
+
+    if st.button("🔥 GUARDAR TODO EL PLATO EN LA NUBE"):
+        if nombre_plato and st.session_state.temp_ingredientes:
+            data_plato = {
+                "nombre_plato": nombre_plato,
+                "ingredientes": st.session_state.temp_ingredientes,
+                "preparacion": "Generada desde la app"
+            }
+            supabase.table("recetario").upsert(data_plato).execute()
+            st.session_state.recetario = cargar_recetario() # Recarga el recetario
+            st.session_state.temp_ingredientes = {} # Limpia la mesa de trabajo
+            st.success(f"¡El plato '{nombre_plato}' ya está disponible para siempre!")
+        else:
+            st.warning("Asegúrate de poner un nombre y añadir ingredientes.")
 
 # --- SECCIÓN: RECETARIO ---
 elif opcion == "Recetario 📖":
-    st.title("Tus Recetas Guardadas")
+    st.title("Tus Platos Guardados")
     if st.session_state.recetario:
-        plato = st.selectbox("Elegir plato:", list(st.session_state.recetario.keys()))
-        if st.button("Agregar al Plan"):
-            st.session_state.plan.append(plato)
-            st.success("Añadido al plan")
+        seleccion = st.selectbox("Selecciona un plato para ver o añadir:", list(st.session_state.recetario.keys()))
+        info = st.session_state.recetario[seleccion]
+        
+        st.write("**Ingredientes:**")
+        st.json(info['ingredientes']) # Muestra los ingredientes guardados
+        
+        if st.button("➕ Añadir este plato a Mi Plan"):
+            st.session_state.plan.append(seleccion)
+            st.success(f"{seleccion} añadido a tu plan semanal.")
     else:
-        st.info("No hay recetas guardadas en Supabase.")
+        st.warning("No hay platos guardados en la nube aún.")
 
 # --- SECCIÓN: MI PLAN ---
 elif opcion == "Mi Plan 📝":
-    st.title("Plan Semanal")
-    if not st.session_state.plan:
-        st.info("El plan está vacío.")
-    else:
-        for p in st.session_state.plan:
-            st.write(f"✅ {p}")
+    st.title("Planificación Semanal")
+    if st.session_state
