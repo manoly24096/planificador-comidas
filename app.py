@@ -35,7 +35,7 @@ if 'plan' not in st.session_state:
 st.sidebar.title(f"Menú Pro")
 opcion = st.sidebar.radio("Ir a:", ["Mi Plan 📝", "Recetario 📖", "Añadir/Editar Platos 🍳", "Base de Ingredientes 🍅"])
 
-# --- SECCIÓN: INGREDIENTES ---
+# --- SECCIÓN: BASE DE INGREDIENTES ---
 if opcion == "Base de Ingredientes 🍅":
     st.title("Ingredientes Disponibles")
     with st.form("nuevo_ing"):
@@ -43,9 +43,22 @@ if opcion == "Base de Ingredientes 🍅":
         cat = st.selectbox("Categoría", ["Abarrotes", "Carnes", "Verduras", "Frutas", "Otros"])
         p = st.number_input("Precio S/", min_value=0.0)
         if st.form_submit_button("Guardar"):
-            supabase.table("ingredientes_db").upsert({"key_name": n.lower(), "display_name": n, "precio_base": p, "categoria": cat}).execute()
-            st.session_state.ingredientes_db = cargar_ingredientes()
-            st.success("Guardado"); st.rerun()
+            if n:
+                # AQUÍ ESTÁ EL CAMBIO: Usamos los nombres exactos del SQL
+                datos_ing = {
+                    "nombre_clave": n.lower().strip(), 
+                    "nombre_para_mostrar": n, 
+                    "precio_base": p, 
+                    "categoria": cat,
+                    "unidad_precio": "unidad"
+                }
+                try:
+                    supabase.table("ingredientes_db").upsert(datos_ing).execute()
+                    st.session_state.ingredientes_db = cargar_ingredientes()
+                    st.success(f"¡{n} guardado!"); st.rerun()
+                except Exception as e:
+                    st.error(f"Error de base de datos: {e}")
+
 
 # --- SECCIÓN: AÑADIR/EDITAR PLATOS ---
 elif opcion == "Añadir/Editar Platos 🍳":
