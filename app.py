@@ -40,7 +40,7 @@ opcion = st.sidebar.radio("Ir a:", ["Mi Plan 📝", "Recetario 📖", "Añadir/E
 
 # --- SECCIÓN: BASE DE INGREDIENTES (CON LIMPIEZA AUTOMÁTICA) ---
 if opcion == "Base de Ingredientes 🍅":
-    st.title("Gestión de Inventario 📋")
+    st.title("Ingredientes 📋")
     
     # Usamos una clave para resetear el formulario
     if "form_key" not in st.session_state:
