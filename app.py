@@ -33,17 +33,27 @@ st.markdown("""
   [data-testid="stSidebarCollapseButton"] span {
     display: none !important;
   }
-  /* Botón colapsar — solo mostrar el SVG */
+  /* Botón colapsar — fondo blanco, flecha verde oscura */
   [data-testid="stSidebarCollapseButton"] {
     visibility: visible !important;
+    position: absolute !important;
+    top: 12px !important;
+    right: -18px !important;
+    z-index: 999 !important;
   }
   [data-testid="stSidebarCollapseButton"] button {
-    background: rgba(255,255,255,0.15) !important;
-    border-radius: 8px !important;
+    background: #ffffff !important;
+    border-radius: 50% !important;
+    width: 36px !important;
+    height: 36px !important;
+    border: 2px solid #2e7d32 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.20) !important;
   }
   [data-testid="stSidebarCollapseButton"] svg {
-    fill: #ffffff !important;
-    visibility: visible !important;
+    color: #1b5e20 !important;
+    fill: #1b5e20 !important;
+    width: 20px !important;
+    height: 20px !important;
   }
   section[data-testid="stSidebar"] .stRadio label {
     background: rgba(255,255,255,0.10);
