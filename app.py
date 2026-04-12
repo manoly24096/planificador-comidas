@@ -29,21 +29,21 @@ st.markdown("""
     font-size: 1.05rem !important;
   }
 
-  /* Botón colapsar/expandir sidebar — VISIBLE */
-  button[data-testid="collapsedControl"],
-  button[kind="header"],
-  [data-testid="stSidebarCollapseButton"] button,
-  [data-testid="stSidebarCollapseButton"] svg {
-    color: #ffffff !important;
-    background: rgba(255,255,255,0.15) !important;
-    border-radius: 8px !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    display: flex !important;
+  /* Ocultar el texto "keyboard_double_a" que aparece en el ícono */
+  [data-testid="stSidebarCollapseButton"] span {
+    display: none !important;
   }
+  /* Botón colapsar — solo mostrar el SVG */
   [data-testid="stSidebarCollapseButton"] {
     visibility: visible !important;
-    display: block !important;
+  }
+  [data-testid="stSidebarCollapseButton"] button {
+    background: rgba(255,255,255,0.15) !important;
+    border-radius: 8px !important;
+  }
+  [data-testid="stSidebarCollapseButton"] svg {
+    fill: #ffffff !important;
+    visibility: visible !important;
   }
   section[data-testid="stSidebar"] .stRadio label {
     background: rgba(255,255,255,0.10);
