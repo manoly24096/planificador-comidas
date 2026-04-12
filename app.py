@@ -29,31 +29,34 @@ st.markdown("""
     font-size: 1.05rem !important;
   }
 
-  /* Ocultar el texto "keyboard_double_a" que aparece en el ícono */
+  /* Ocultar el texto "keyboard_double_a" */
   [data-testid="stSidebarCollapseButton"] span {
     display: none !important;
   }
-  /* Botón colapsar — fondo blanco, flecha verde oscura */
+  /* Botón colapsar — fondo blanco, flecha negra */
   [data-testid="stSidebarCollapseButton"] {
     visibility: visible !important;
     position: absolute !important;
-    top: 12px !important;
-    right: -18px !important;
-    z-index: 999 !important;
+    top: 14px !important;
+    right: -20px !important;
+    z-index: 9999 !important;
   }
   [data-testid="stSidebarCollapseButton"] button {
     background: #ffffff !important;
     border-radius: 50% !important;
     width: 36px !important;
     height: 36px !important;
-    border: 2px solid #2e7d32 !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.20) !important;
+    border: 2px solid #cccccc !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25) !important;
+    padding: 4px !important;
   }
-  [data-testid="stSidebarCollapseButton"] svg {
-    color: #1b5e20 !important;
-    fill: #1b5e20 !important;
-    width: 20px !important;
-    height: 20px !important;
+  /* Forzar flecha negra — anula el color blanco del wildcard */
+  [data-testid="stSidebarCollapseButton"] button svg,
+  [data-testid="stSidebarCollapseButton"] button svg path,
+  [data-testid="stSidebarCollapseButton"] button * {
+    color: #000000 !important;
+    fill: #000000 !important;
+    stroke: #000000 !important;
   }
   section[data-testid="stSidebar"] .stRadio label {
     background: rgba(255,255,255,0.10);
